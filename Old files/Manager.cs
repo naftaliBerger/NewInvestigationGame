@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace NewInvestigationGame
 {
-    internal class Sensor
+    internal class Manager
     {
+
     }
 }
