@@ -43,11 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IranianAgent.cs" />
-    <Compile Include="Manager.cs" />
+    <Compile Include="new files\Agent.cs" />
+    <Compile Include="new files\JuniorAgent.cs" />
+    <Compile Include="Old files\IranianAgent.cs" />
+    <Compile Include="Old files\Manager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sensor.cs" />
+    <Compile Include="Old files\Sensor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using NewInvestigationGame;
 
 namespace NewInvestigationGame
 {
     public abstract class Agent
     {
-        public List<string> weaknesses;
+        public List<string> weaknesses; 
         public int amountDamage;
-        public List<string> listOfSensores = new List<string> { "Base", "Thermal","Motion", "video", "audio", "heat" };
+        public List<string> listOfSensors = new List<string> { "Base", "Thermal", "Motion", "Video", "Audio", "Heat" };
         public Random rnd = new Random();
 
         public Agent(int weaknessCount)
@@ -18,30 +15,38 @@ namespace NewInvestigationGame
             weaknesses = new List<string>();
             amountDamage = 0;
 
-            for (int i = 0; i < weaknessCount - 1; i++)
+            
+            for (int i = 0; i < weaknessCount; i++)
             {
-                int index = rnd.Next(listOfSensores.Count);
-                weaknesses.Add(listOfSensores[index]);
+                int index = rnd.Next(listOfSensors.Count);
+                weaknesses.Add(listOfSensors[index]);
             }
         }
 
         public bool TrySensor(string sensor)
         {
-            bool hit = false;
             for (int i = 0; i < weaknesses.Count; i++)
             {
-                if (sensor == weaknesses[i])
+                if (weaknesses[i] == sensor)
                 {
+                    weaknesses.RemoveAt(i);
                     amountDamage++;
-                    weaknesses[i] = "used";
-                    hit = true;
-                    break;
+                    return true; 
                 }
             }
-            return hit;
+            return false; 
         }
 
-        
+        public string GetStatus()
+        {
+            return $"{amountDamage}/{amountDamage + weaknesses.Count}";
+        }
 
+        public bool IsExposed()
+        {
+            return weaknesses.Count == 0;
+        }
+
+       
     }
 }
