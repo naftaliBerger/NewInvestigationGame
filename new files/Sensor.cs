@@ -16,7 +16,7 @@ namespace NewInvestigationGame
             Name = name;
         }
 
-        public bool Activate(Agent agent)
+        public virtual bool Activate(Agent agent)
         {
             return agent.TrySensor(Name);
         }

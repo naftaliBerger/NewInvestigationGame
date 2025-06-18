@@ -8,13 +8,16 @@ namespace NewInvestigationGame
 {
     internal class Manager
     {
-        private Agent agent;
-        private int turnCounter;
+        //צריך בירור
+        public Agent agent;
+        public int turnCounter;
+        public PulseSensor pulseSensor = new PulseSensor("Pulse");
+
 
         public Manager()
         {
             agent = new JuniorAgent();
-            //turnCounter = 0;
+            turnCounter = 0;
         }
 
         public void StartInvestigation()
@@ -22,9 +25,17 @@ namespace NewInvestigationGame
             Console.WriteLine("Investigation has begun!");
             while (!agent.IsExposed())
             {
-                Console.WriteLine("Select a sensor (Base / Thermal / Motion / Video / Audio / Heat):");
+                Console.WriteLine("Select a sensor (Base / Thermal / Motion / Video / Audio / Heat/ Pulse):");
                 string input = Console.ReadLine();
-                Sensor sensor = new Sensor(input);
+                Sensor sensor;
+                if (input == "Pulse")
+                {
+                    sensor = pulseSensor;
+                }
+                else
+                {
+                    sensor = new Sensor(input);
+                }
                 bool hit = sensor.Activate(agent);
                 turnCounter++;
                 

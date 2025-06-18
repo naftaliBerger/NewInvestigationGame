@@ -7,15 +7,15 @@ namespace NewInvestigationGame
     {
         public List<string> weaknesses; 
         public int amountDamage;
-        public List<string> listOfSensors = new List<string> { "Base", "Thermal", "Motion", "Video", "Audio", "Heat" };
         public Random rnd = new Random();
 
         public Agent(int weaknessCount)
         {
             weaknesses = new List<string>();
             amountDamage = 0;
+            List<string> listOfSensors = new List<string> { "Base", "Thermal", "Motion", "Video", "Audio", "Heat", "Pulse" };
 
-            
+
             for (int i = 0; i < weaknessCount; i++)
             {
                 int index = rnd.Next(listOfSensors.Count);
